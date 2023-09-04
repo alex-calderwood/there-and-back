@@ -21,7 +21,7 @@ Pipeline runs for each of the 200 total stories are available in the `runs` fold
 
 Additionally, we computed two sets of statistics over each set of runs. First, we computed the compile rate and plan rate. Second, we computed various descriptive stats about the generated domains and problems, e.g., the average number of predicates and the average number of actions. These are available in the `stats` folder.
 
-### Thematic Analysis.
+### Thematic Analysis
 
 To get a holistic sense of how valuable this system would be in a creative tool, we additionally performed thematic analysis over a small sample of the successful results. The outputs we reviewed are reproduced in the `thematic_analysis` folder.
 
@@ -29,7 +29,7 @@ To get a holistic sense of how valuable this system would be in a creative tool,
 
 While our full prompts are dynamically generated at runtime, the static system prompts are available in the `prompts` folder. Note that examples of full prompts can be found in each run's `metadata.json` file.
 
-## Notes 
+## Contact Us
 
 We intend to release an interactive demo and the full source code soon as part of our follow-up work. For now, if you have any questions, feel free to email us at jochkell [at] ucsc [dot] edu or alexcwd [at] ucsc [dot] edu. We're happy to talk more about the paper, our results, and our implementation.
 
