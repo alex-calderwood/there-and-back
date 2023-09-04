@@ -1,0 +1,3 @@
+The Glaive Narrative Planner, by Stephen G. Ware
+Reading domain............ 
+java.lang.RuntimeException: com.stephengware.java.planware.io.ParseException: Expected end of document, but encountered end of list (at line 131).

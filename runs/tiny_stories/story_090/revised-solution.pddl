@@ -1,0 +1,5 @@
+(define (plan tim-and-ben-friends-solution)
+  (:problem tim-and-ben-friends)
+  (:steps (find-toy tim ben)
+          (want-to-take tom ben tim)
+          (stand-up tim tom ben)))

@@ -1,0 +1,27 @@
+(define (problem be-kind)
+  (:domain volcano-explorers)
+  (:objects
+    friend1 friend2 old-man - person
+    volcano - object)
+  (:init
+    (at friend1 volcano)
+    (at friend2 volcano)
+    (intends friend1 (travel friend1 volcano))
+    (intends friend2 (travel friend2 volcano))
+    (intends friend1 (start-counting friend1))
+    (intends friend2 (start-counting friend2))
+    (intends friend1 (laugh friend1 old-man))
+    (intends friend2 (laugh friend2 old-man))
+    (intends old-man (yell old-man friend1))
+    (intends old-man (yell old-man friend2))
+    (intends friend1 (apologize friend1 old-man))
+    (intends friend2 (apologize friend2 old-man))
+    (intends friend1 (learn friend1))
+    (intends friend2 (learn friend2)))
+  (:goal
+    (and (polite friend1)
+    (kind friend1)
+    (polite friend2)
+    (kind friend2))
+  )
+)

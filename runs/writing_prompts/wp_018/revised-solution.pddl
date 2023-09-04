@@ -1,0 +1,5 @@
+(define (plan grim-reaper-transition-solution)
+  (:problem grim-reaper-transition)
+  (:steps (retire old-reaper)
+          (receive-items old-reaper protagonist)
+          (become-reaper protagonist)))

@@ -1,0 +1,16 @@
+{
+    "tiny_stories_gpt35": {
+        "total": 100,
+        "compiled": 0,
+        "planned": 0,
+        "percent_compiled": 0.0,
+        "percent_planned": 0.0
+    },
+    "writing_prompts_gpt35": {
+        "total": 100,
+        "compiled": 0,
+        "planned": 0,
+        "percent_compiled": 0.0,
+        "percent_planned": 0.0
+    }
+}

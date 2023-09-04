@@ -1,0 +1,133 @@
+input
+
+Once upon a time, in a quiet little town, there was a cat named Tom. Tom was a very stubborn cat. He liked to play with his friends, but he did not like to share his toys. One sunny day, Tom's friend, a dog named Max, came to play with him. They played on the grass and ran around the trees.
+Max saw a ball on the side of the road and wanted to play with it. He asked Tom if he could play with the ball too. But Tom refused to share the ball with Max. Max was sad and did not want to play with Tom anymore. He went away to find other friends to play with.
+Tom felt lonely without Max and realized that he should have shared the ball. He went to find Max and said sorry. Tom promised to share his toys from now on. Max forgave Tom, and they played happily together with the ball. From that day on, Tom always shared his toys, and they had lots of fun together.
+
+domain
+
+(define (domain cat-and-dog)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character - object toy - item)
+  (:predicates
+    (has ?character - character ?item - item)
+    (playing-together ?character1 - character ?character2 - character)
+    (shares ?character - character)
+    (friends ?character1 - character ?character2 - character)
+  )
+
+  ;; A character shares a toy with another character.
+  (:action share
+    :parameters
+      (?sharer - character ?item - item ?receiver - character)
+    :precondition
+      (and (not (= ?sharer ?receiver))
+      (has ?sharer ?item)
+      (friends ?sharer ?receiver))
+    :effect
+      (and (shares ?sharer)
+      (has ?receiver ?item))
+    :agents
+      (?sharer)
+  )
+
+  ;; Two characters play together.
+  (:action play-together
+    :parameters
+      (?character1 - character ?character2 - character)
+    :precondition
+      (and (not (= ?character1 ?character2))
+      (friends ?character1 ?character2)
+      (shares ?character1))
+    :effect
+      (playing-together ?character1 ?character2)
+    :agents
+      (?character1 ?character2)
+  )
+
+  ;; A character apologizes to another character.
+  (:action apologize
+    :parameters
+      (?apologizer - character ?receiver - character)
+    :precondition
+      (and (not (= ?apologizer ?receiver))
+      (friends ?apologizer ?receiver))
+    :effect
+      (shares ?apologizer)
+    :agents
+      (?apologizer)
+  )
+
+  ;; Two characters become friends.
+  (:action become-friends
+    :parameters
+      (?character1 - character ?character2 - character)
+    :precondition
+      (not (= ?character1 ?character2))
+    :effect
+      (friends ?character1 ?character2)
+    :agents
+      (?character1 ?character2)
+  )
+)
+
+problem
+
+(define (problem share-toys)
+  (:domain
+    cat-and-dog)
+  (:objects
+    tom max - character
+    ball - toy)
+  (:init
+    (has tom ball)
+    (friends tom max)
+    (intends tom (shares tom))
+    (intends tom (playing-together tom max))
+    (intends max (playing-together tom max))
+  )
+  (:goal
+    (and (shares tom)
+    (playing-together tom max))
+  )
+)
+
+solution
+
+(define (plan share-toys-solution)
+  (:problem share-toys)
+  (:steps (share tom ball max)
+          (play-together tom max)))
+
+pd
+
+<|story|>
+
+Tom, a gentle-hearted cat, lived next door to Max, a lovable dog. They were the best of friends and loved to spend time together. Sharing didn't come easy to Tom, but he knew that he needed to practice it if he wanted to strengthen the bond of their friendship.
+
+One sunny afternoon, Tom found a brand new ball in his den. Knowing that it would be more fun to play together, he decided he would share the ball with Max. He diligently carried the ball in his mouth, walked over to Max's backyard, and greeted him with a friendly meow.
+
+Max's eyes gleamed with excitement as he noticed the ball in Tom's mouth. Tom gently put the ball down, and with a proud nod, shared the toy with his friend. Max took the opportunity to eagerly indulge in playtime with Tom, wagging his tail with joy.
+
+As they played, Tom and Max took turns rolling the ball to each other, chasing after it, and giggling with glee. Their laughter echoed through the neighborhood, and their friendship blossomed more and more with each shared roll.
+
+Neighbors couldn't help but smile as they watched Tom and Max frolic in the warm sunshine. It was evident that sharing their toys had brought them even closer than they had ever been before.
+
+As the sun set, Tom and Max continued to play together until the sky turned pink and orange. With content hearts and tired limbs, they finally settled down in the grass, catching their breath and enjoying each other's company.
+
+With newfound appreciation for sharing, Tom's sincere intentions had brought them closer together, allowing them to experience the power of teamwork and the beauty of a true friendship.
+
+pdp
+
+<|story|>
+
+Tom the cat and Max the dog were unusual friends. They lived together in a cozy little house with their humans, who were often awed by Tom and Max's friendship. Most of the time, Tom was quite possessive of his favorite ball, but he knew that sharing it would lead to hours of fun with Max.
+
+One sunny afternoon, Tom saw Max looking longingly at the ball and realized it was time to play together. As Tom was a kind soul, it was in his intentions to share the ball with Max. He picked up the ball in his mouth and trotted over to Max, who wagged his tail in excitement.
+
+Tom dropped the ball in front of Max, who quickly caught on to the generous gesture. Together, they began to play with the ball, running around the backyard, and taking turns chasing and catching it. The two friends were having the time of their lives, thanks to Tom's willingness to share and their deep understanding of each other's needs.
+
+Their humans watched lovingly from the window as Tom and Max played, reinforcing the bond between them. The warm sunlight seemed to complement the magical moment, and their friendship only grew stronger.
+
+Tom and Max continued their playful adventures for the rest of the day, teaching everyone around them the value of sharing and the power of an unbreakable friendship.
+

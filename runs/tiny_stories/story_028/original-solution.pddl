@@ -1,0 +1,7 @@
+(define (plan organize-room-solution)
+  (:problem organize-room)
+  (:steps (read friend2)
+          (read friend1)
+          (read lily)
+          (find lily book1)
+          (put-on-shelf lily book1 house)))

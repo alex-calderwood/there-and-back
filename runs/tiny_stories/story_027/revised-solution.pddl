@@ -1,0 +1,5 @@
+(define (plan find-spaghetti-solution)
+  (:problem find-spaghetti)
+  (:steps (search lily room)
+          (hide lily spaghetti room)
+          (find lily spaghetti room)))

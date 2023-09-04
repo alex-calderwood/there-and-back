@@ -1,0 +1,34 @@
+<|plan|>
+
+(define (plan office-life-solution)
+  (:problem office-life-story)
+  (:steps
+    (start)
+    (meet pat candice)
+    (meet pat david)
+    (meet candice pat)
+    (meet david pat)
+    (go-to pat office restaurant)
+    (go-to candice office restaurant)
+    (go-to david office restaurant)
+    (eat pat)
+    (eat candice)
+    (eat david)
+    (feel pat uncertainty)
+    (end)
+  )
+)
+
+<|story|>
+
+Meet Pat, Candice, and David – three coworkers who spend most of their days working in the same office. They are all hungry and have plans to meet each other today. Pat hopes not only to get to know Candice and David but also to experience some uncertainty about life outside work while satisfying his hunger.
+
+As the day moves along, Pat meets Candice and they strike up a conversation about their work and their interests. Pat instantly clicks with Candice, and they both discover they have quite a bit in common. Then, Pat meets David, who turns out to be a friendly and engaging person. Just as Pat intended, he is now familiar with both Candice and David.
+
+In the meantime, Candice and David both decide to meet Pat as well. They become acquainted and begin to understand each other's personalities and background.
+
+Feeling their stomachs rumble, they decide to leave the office and head over to a nearby restaurant to grab some lunch together. Pat, Candice, and David all find dishes that suit their taste and indulge in a hearty meal. As they eat and bond over their experiences, their hunger starts to fade away.
+
+In the midst of their conversations, Pat unexpectedly finds himself feeling uncertain about life outside his work bubble. The deep discussions about personal experiences, and the world beyond their office walls, spark an inner conflict within him. The feeling of uncertainty grows stronger, just as he had wished.
+
+By the end of the day, Pat, Candice, and David successfully achieve their goals – they get to know each other, satisfy their hunger, and for Pat, explore the uncertainty that comes with stepping out of his comfort zone.

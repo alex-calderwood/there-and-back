@@ -1,0 +1,107 @@
+input
+
+Once upon a time, there was a powerful girl named Lily. She had a swing in her backyard. Lily loved to play on her swing every day.
+One sunny day, Lily's friend Tom came over. Tom saw the swing and said, "Wow, you own a swing! Can I play on it too?" Lily smiled and said, "Yes, we can play together!"
+Lily and Tom took turns on the swing. They laughed and had lots of fun. They felt like they could touch the sky. At the end of the day, they were very happy. And from that day on, they played on the swing together every day.
+
+domain
+
+(define (domain swing-time)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character - object)
+  (:predicates
+    (has-swing ?character - character)
+    (playing-together ?character1 - character ?character2 - character)
+    (happy ?character - character)
+  )
+
+  ;; A character invites another character to play on the swing.
+  (:action invite
+    :parameters
+      (?inviter - character ?invitee - character)
+    :precondition
+      (and (not (= ?inviter ?invitee))
+      (has-swing ?inviter))
+    :effect
+      (playing-together ?inviter ?invitee)
+    :agents
+      (?inviter)
+  )
+
+  ;; Two characters play on the swing together.
+  (:action play-on-swing
+    :parameters
+      (?character1 - character ?character2 - character)
+    :precondition
+      (and (not (= ?character1 ?character2))
+      (playing-together ?character1 ?character2))
+    :effect
+      (and (happy ?character1)
+      (happy ?character2))
+    :agents
+      (?character1 ?character2)
+  )
+)
+
+problem
+
+(define (problem swing-friends)
+  (:domain
+    swing-time)
+  (:objects
+    lily tom - character)
+  (:init
+    (has-swing lily)
+    (intends lily (happy lily))
+    (intends lily (happy tom))
+    (intends tom (happy tom))
+  )
+  (:goal
+    (and (happy lily)
+    (happy tom))
+  )
+)
+
+solution
+
+(define (plan swing-friends-solution)
+  (:problem swing-friends)
+  (:steps (invite lily tom)
+          (play-on-swing lily tom)))
+
+pd
+
+<|story|>
+
+In the small town of Greenwood, there lived two little kids named Lily and Tom. Greenwood was a peaceful place, filled with warm sun and green meadows, where children loved to play.
+
+One day, Lily's father decided to build a swing in their backyard. Lily was thrilled and couldn't wait to swing on it. She thought to herself, "It would be more fun if Tom could join me too."
+
+The following day, Lily decided to invite Tom over to her house to play on the swing. She knew that it would be a great way to strengthen their friendship and create even more joyful memories.
+
+When Tom arrived at Lily's house, they both went straight to the backyard where the swing was. Lily proudly showed him the wooden seat and the ropes hanging from the tall oak tree. The wind gently swayed the swing as Lily and Tom exchanged excited glances.
+
+"Would you like to play on the swing with me?" Lily asked as she held onto the ropes.
+
+"Of course! I'd love to!" Tom responded enthusiastically. 
+
+The two friends took turns on the swing, pushing each other higher and higher. As the wind blew through their hair and their laughter filled the air, happiness radiated from their faces. They swung until they were tired, then sat in the grass, enjoying each other's company.
+
+As the sun began to set, painting the sky a beautiful orange hue, Tom and Lily knew that this day would be one of their most cherished memories. They said their goodbyes, promising to swing together again soon. In that magical moment, they found the simple joy of playing together and the happiness that comes from sharing a wonderful experience.
+
+And so, Lily and Tom remained the best of friends, spending countless days swinging under the oak tree, their laughter echoing through the town of Greenwood. Their happiness, hand in hand, stood as a testament to the strong bond that can grow from something as simple as the joy of a swing.
+
+pdp
+
+<|story|>
+
+In a quaint little town, there lived two friends named Lily and Tom. They shared many fun moments together, from adventures in the woods to laughing on their porch swings. Lily, with her warm heart and loving nature, always made sure that both of them were happy.
+
+One sunny day, Lily noticed her swing moving gently in the breeze. Wanting to share her joy with Tom, she thought about inviting him. She knew that playing together on the swing would bring happiness to them both, as it always did during their meetups.
+
+Lily wasted no time in inviting Tom to her house. When Tom received the invitation, he was thrilled, and eagerly accepted. The two friends met up and spent the entire day playing on the swing, giggling and chatting, having the time of their lives.
+
+As Lily pushed Tom higher and higher, the two friends felt a surge of happiness. The air was filled with laughter and joy as they enjoyed each other's company. Playing together on the swing that day, Lily and Tom's happiness grew, creating a wonderful memory they would cherish forever.
+
+In their small town, the bond between Lily and Tom continuously blossomed. And as the sun set on that magical day, they knew that their friendship would stand the test of time.
+

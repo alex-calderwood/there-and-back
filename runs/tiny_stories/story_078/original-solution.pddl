@@ -1,0 +1,7 @@
+(define (plan support-city-solution)
+  (:problem support-city)
+  (:steps (support-project daughter city-beautification)
+          (support-project mom city-beautification)
+          (become-persistent man)
+          (support-project man city-beautification)
+          (complete-project man city-beautification)))

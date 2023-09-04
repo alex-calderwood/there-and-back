@@ -1,0 +1,126 @@
+input
+
+Once upon a time, there was a lonely little boy named Tim. He had no friends to play with. One day, he heard a noise coming from a drawer in his room. Tim was scared, but he wanted to know what was inside.
+He opened the drawer and found a small, talking toy named Ben. "Hi, I'm Ben!" said the toy. "I was scared in the drawer all by myself. Will you be my friend?" Tim smiled and said, "Yes, I will be your friend!"
+But then, Tim's mean big brother Tom came into the room. He saw Ben and wanted to take him away. Tim was scared, but he stood up to Tom. "No, you can't take Ben! He's my friend!" Tom saw how brave Tim was and decided to leave them alone. Tim and Ben were happy and never felt lonely again.
+
+domain
+
+(define (domain tim-and-ben)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character toy - object)
+  (:predicates
+    (in-drawer ?toy - toy)
+    (friends ?character1 - character ?character2 - character)
+    (friends ?character - character ?toy - toy)
+    (wants-to-take ?character - character ?toy - toy)
+    (brave ?character - character)
+  )
+
+  ;; A character finds a toy in a drawer.
+  (:action find-toy
+    :parameters
+      (?character - character ?toy - toy)
+    :precondition
+      (in-drawer ?toy)
+    :effect
+      (and (not (in-drawer ?toy))
+      (friends ?character ?toy))
+    :agents
+      (?character)
+  )
+
+  ;; A character wants to take a toy from another character.
+  (:action want-to-take
+    :parameters
+      (?taker - character ?toy - toy ?owner - character)
+    :precondition
+      (and (not (= ?taker ?owner))
+      (friends ?owner ?toy))
+    :effect
+      (wants-to-take ?taker ?toy)
+    :agents
+      (?taker)
+  )
+
+  ;; A character stands up to another character.
+  (:action stand-up
+    :parameters
+      (?defender - character ?taker - character ?toy - toy)
+    :precondition
+      (and (not (= ?defender ?taker))
+      (wants-to-take ?taker ?toy)
+      (friends ?defender ?toy))
+    :effect
+      (and (not (wants-to-take ?taker ?toy))
+      (brave ?defender))
+    :agents
+      (?defender)
+  )
+)
+
+problem
+
+(define (problem tim-and-ben-friends)
+  (:domain
+    tim-and-ben)
+  (:objects
+    tim tom - character
+    ben - toy)
+  (:init
+    (in-drawer ben)
+    (intends tim (friends tim ben))
+    (intends tom (wants-to-take tom ben))
+    (intends tim (brave tim))
+  )
+  (:goal
+    (and (friends tim ben)
+    (not (wants-to-take tom ben))
+    (brave tim))
+  )
+)
+
+solution
+
+(define (plan tim-and-ben-friends-solution)
+  (:problem tim-and-ben-friends)
+  (:steps (find-toy tim ben)
+          (want-to-take tom ben tim)
+          (stand-up tim tom ben)))
+
+pd
+
+<|story|>
+
+Tim was a sweet, timid little boy who loved playing with his toys. He had many toys, but he always longed for a special friend that understood him. One day, while rummaging through his drawer, he discovered a toy bear named Ben. Tim took Ben out of the drawer, and in that moment, they became the best of friends.
+
+Tim and Ben spent countless hours playing together, sharing stories, and creating unforgettable memories. Tim felt that, for the first time, he had found a toy that truly understood him.
+
+One day, while playing at the park, Tim and Ben encountered Tom, an older, more dominating boy. Tom spotted Ben from afar and decided he wanted to take him for himself, despite knowing how much Ben meant to Tim.
+
+Tom approached Tim with an air of entitlement and boldly expressed his desire to take Ben away from him. Tim, despite being heartbroken and scared, decided that it was time to stand up for himself and confront Tom.
+
+Fueled by the love and friendship he shared with Ben, Tim bravely told Tom that he wouldn't let him take his beloved friend away from him. He courageously emphasized how much Ben meant to him and how their friendship was unbreakable.
+
+Tom, taken aback by Tim's brave stand, hesitated and then backed off, relinquishing his desires to take Ben away from Tim. In that moment, Tim realized that he had done what he once thought was impossible – he stood up for himself and protected a friend he loved dearly.
+
+From that day forward, the bond between Tim and Ben grew even stronger, and Tim discovered an inner strength that he never knew he had. Their friendship remained unshakable, and Tim carried his newfound bravery with him wherever he went.
+
+pdp
+
+<|story|>
+
+Tim, a curious and adventurous child, loved exploring every nook and cranny of his house. One day, he came across a drawer he had never seen before. Filled with excitement, he opened it and found an adorable little toy named Ben. From the moment Tim laid his eyes on Ben, he knew they would be the best of friends.
+
+Now, Tim had an older brother named Tom who was notorious for taking things that didn't belong to him. Tom's eyes gleamed when he spotted Ben and saw how much Tim cared for his new toy. Tom decided that he would take Ben away from Tim to show him who was the boss.
+
+Tim sensed Tom's devious intentions and his heart clenched in fear. However, Tim's burning desire to protect and cherish his friendship with Ben rose above his fear. He mustered all his courage and decided to confront his older brother.
+
+The confrontation took place in their shared bedroom when Tom tried to snatch Ben from Tim's hands. Tim, with newfound bravery, stood up to his brother and told him, "You can't take Ben away from me! He's my friend, and I won't let you ruin our friendship."
+
+As Tim spoke those words, a fierce resolve glowed in his eyes. This was the first time Tim had ever stood up to Tom, and it caught Tom by surprise. Deep down, Tom admired Tim's courage and decided to leave Ben alone.
+
+In the end, Tim and Ben's friendship grew stronger, and they were inseparable ever after. Tim's bravery that day not only saved his bond with Ben but also earned him respect from his older brother, Tom.
+
+The story of Tim, Ben, and Tom teaches us to face our fears and stand up for what's right, as true friendship is a treasure worth fighting for.
+

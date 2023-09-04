@@ -1,0 +1,3 @@
+The Glaive Narrative Planner, by Stephen G. Ware
+Reading domain............ 
+java.lang.RuntimeException: com.stephengware.java.planware.io.ParseException: Illegal format for domain: Operator "help-stuck" contains the element "(at ?helper ?stuck-character)", which is not defined in this universe (at line 1).

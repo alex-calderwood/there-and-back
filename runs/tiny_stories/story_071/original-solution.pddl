@@ -1,0 +1,5 @@
+(define (plan bella-escape-solution)
+  (:problem bella-escape)
+  (:steps (become-friends bella tom)
+          (break-cage bella small-cage)
+          (escape bella small-cage)))

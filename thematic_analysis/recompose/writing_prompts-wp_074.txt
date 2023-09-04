@@ -1,0 +1,187 @@
+input
+
+Dear Bill,
+
+It took a lot of time for me to realize what you are, and now that I do I can't seem to think of words that describe how I feel about you being in my life.
+
+Did you know that, growing up, other kids don't periodically put their dogs in the freezer for fun? Or spend countless hours drowning mice in the basement? It's amazing Mom and Dad never found out about you, especially after you killed the McInley's cat.
+
+I used to wonder why throughout school we never had really close friends. I mean obviously we had friends, more than most kids, but they were never close friends. It was the same thing with girlfriends. I consistently thought there was something wrong with me, and I guess there was : you. You manipulated everyone to feed your unhealthy obsession with us, and kept me emotionally isolated so I wouldn't get in your way.
+
+As we 've grown older we 've grown apart and I thought I was rid of you after basic, but that was just another part of your scheme. What better place could there be for you to thrive than the military, and you used me to get you through the training. That was a mistake however, as it has made me just capable enough to cut you off from the people you wo n't even let me love. I 'm going to do it Bill, and you can't stop me.
+
+Dear Mom and Dad, I 'm sorry for having been so cold. I thought I hated you, and maybe I do, but I 'd like to think it was just Bill's influence. I wish I could say I love you but if I did, none of this would be necessary. All I can say is crack on, and focus on Chloe and Jake.
+
+I think I 've found the words, Bill. I fundamentally despise you. I hate you in an intimate way that most other people don't understand. Most other people don't have the relationship we do. It's because of you that I 'll never be able to have a normal life, with other people. It's your arrogant and insecure thoughts that influence every decision I make. It's your fault that I don't feel a connection to other people. I 've done my research and there's no treatment for you, only pretending to be normal. But I don't take pleasure in a facade like you, and I 'm not so self centred as to drag this despairing monologue out further. If you will force me into a future of self-loathing, fear, and alienation. . . if you take my future from me, then I 'll do the same to you.
+
+Here's to you, asshole. 
+
+domain
+
+(define (domain bill-and-narrator)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character - object)
+  (:predicates
+    (influenced ?character - character)
+    (isolated ?character - character)
+    (hates ?character1 - character ?character2 - character)
+    (manipulates ?character1 - character ?character2 - character)
+    (despises ?character1 - character ?character2 - character)
+    (apologized ?character1 - character ?character2 - character)
+  )
+
+  ;; A character influences another character.
+  (:action influence
+    :parameters
+      (?influencer - character ?influenced - character)
+    :precondition
+      (and (not (= ?influencer ?influenced))
+      (not (influenced ?influenced)))
+    :effect
+      (influenced ?influenced)
+    :agents
+      (?influencer)
+  )
+
+  ;; A character isolates another character.
+  (:action isolate
+    :parameters
+      (?isolator - character ?isolated - character)
+    :precondition
+      (and (not (= ?isolator ?isolated))
+      (not (isolated ?isolated)))
+    :effect
+      (isolated ?isolated)
+    :agents
+      (?isolator)
+  )
+
+  ;; A character manipulates another character.
+  (:action manipulate
+    :parameters
+      (?manipulator - character ?manipulated - character)
+    :precondition
+      (and (not (= ?manipulator ?manipulated))
+      (not (manipulates ?manipulator ?manipulated)))
+    :effect
+      (manipulates ?manipulator ?manipulated)
+    :agents
+      (?manipulator)
+  )
+
+  ;; A character hates another character.
+  (:action hate
+    :parameters
+      (?hater - character ?hated - character)
+    :precondition
+      (and (not (= ?hater ?hated))
+      (not (hates ?hater ?hated)))
+    :effect
+      (hates ?hater ?hated)
+    :agents
+      (?hater)
+  )
+
+  ;; A character despises another character.
+  (:action despise
+    :parameters
+      (?despiser - character ?despised - character)
+    :precondition
+      (and (not (= ?despiser ?despised))
+      (not (despises ?despiser ?despised)))
+    :effect
+      (despises ?despiser ?despised)
+    :agents
+      (?despiser)
+  )
+
+  ;; A character apologizes to another character.
+  (:action apologize
+    :parameters
+      (?apologizer - character ?apologized - character)
+    :precondition
+      (and (not (= ?apologizer ?apologized))
+      (not (apologized ?apologizer ?apologized)))
+    :effect
+      (apologized ?apologizer ?apologized)
+    :agents
+      (?apologizer)
+  )
+)
+
+problem
+
+(define (problem bill-narrator-conflict)
+  (:domain
+    bill-and-narrator)
+  (:objects
+    narrator bill mom dad - character)
+  (:init
+    (intends narrator (despises narrator bill))
+    (intends narrator (apologized narrator mom))
+    (intends narrator (apologized narrator dad))
+    (intends bill (influenced narrator))
+    (intends bill (isolated narrator))
+    (intends bill (manipulates bill narrator))
+  )
+  (:goal
+    (and (despises narrator bill)
+    (apologized narrator mom)
+    (apologized narrator dad)
+    (influenced narrator)
+    (isolated narrator)
+    (manipulates bill narrator))
+  )
+)
+
+solution
+
+(define (plan bill-narrator-conflict-solution)
+  (:problem bill-narrator-conflict)
+  (:steps (apologize narrator dad)
+          (apologize narrator mom)
+          (despise narrator bill)
+          (manipulate bill narrator)
+          (isolate bill narrator)
+          (influence bill narrator)))
+
+pd
+
+<|story|>
+
+Ever since young adulthood, Narrator had experienced a deep inner conflict with his older cousin Bill. Bill had a sinister presence and a knack for manipulating people, especially Narrator, who was perpetually caught in his web of deceit.
+
+Bill reveled in sowing discord between Narrator, Mom, and Dad. In time, Narrator developed a deep-seated hatred for Bill and it seemed like all Bill wanted was to isolate Narrator from his family.
+
+One gloomy afternoon, Narrator decided he had enough of Bill's nefarious behavior. Filled with a fiery desire to despise him more openly, Narrator set out to confront Bill.
+
+The tension between the two was palpable. Narrator blurted, "I can't stand you being in my life, Bill. Your influence on me and my relationship with Mom and Dad is what's keeping me from being happy."
+
+Though Bill was never caught off-guard, he feigned hurt and tried to persuade Narrator that he only wanted the best for him and the family. But this time, Narrator didn't fall for it. He was aware of Bill's devious manipulation tactics, and his resentment grew stronger.
+
+Tired and exasperated, Narrator decided to approach the situation differently. He went to Mom and Dad to seek reconciliation. Pouring his heart out, Narrator apologized for letting Bill's toxic presence affect his relationships with them.
+
+Mom and Dad, touched by their child's vulnerability, welcomed Narrator with open arms, acknowledging the pain that Bill had brought into their lives.
+
+As the days went by, Narrator, now openly despising Bill, began to reclaim his life, striving to mend his ties with Mom and Dad. However, despite his best efforts, it became apparent that Bill's dark influence still lingered over him.
+
+Slowly, Narrator withdrew from his family and began to feel isolated. He realized that exposing Bill's true nature empowered him but it also allowed Bill to wield more control over him.
+
+In the end, even though Narrator met his goal of despising Bill and making amends with his parents, he couldn't fully escape the consequences of Bill's manipulations. Bill had succeeded in influencing and isolating him, leaving a bitter trail of resentment that would require more than just apologies to mend.
+
+pdp
+
+<|story|>
+
+Once upon a time, in a quiet little town, lived a family of four. There was the Narrator, their younger brother Bill, and their mom and dad. As time passed, the relationship between the Narrator and Bill began to sour. The Narrator started becoming bitter and resentful. Bill, knowing how to play his cards right, intended to influence and isolate the Narrator from the rest of the family.
+
+The Narrator's resentment led to hatred for Bill. As Bill's crafty and manipulative ways took hold, he carefully orchestrated events that led to misunderstandings between the Narrator and their parents. Amidst all the chaos, the Narrator hurt mom and dad deeply.
+
+One day, the Narrator had an epiphany and realized the intentions of Bill. They wanted to not only despise Bill but also make amends with their mom and dad. They knew they must apologize to them and make things right with their parents.
+
+Gathering the courage, the Narrator went to their dad and poured their heart out, apologizing for their mistakes. The father, with love in his eyes, forgave the Narrator. Filled with relief, the Narrator then turned to their mom, apologizing for the pain they had caused her. The mother, with kindness and understanding, also forgave them.
+
+As the Narrator was making amends with their parents, Bill hatched a plan to manipulate the Narrator further. He saw an opportunity in the situation and found a way to isolate the Narrator from their newly-repaired relationships. As Bill succeeded in his scheme, he planted more seeds of deception, influencing the Narrator's thoughts and feelings.
+
+Even though the Narrator had apologized to their parents and despised Bill for his devious ways, they couldn't escape the manipulative grip Bill had on them. The once harmonious family, now experienced an unending cycle of conflict, manipulation, and deceit.
+

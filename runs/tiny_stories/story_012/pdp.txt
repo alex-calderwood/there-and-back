@@ -1,0 +1,1 @@
+It seems you haven't provided the PDDL domain, problem, and plan information for me to generate a story. Please provide the complete PDDL information for the domain, problem, and plan so that I can create a story based on it.

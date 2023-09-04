@@ -1,0 +1,1 @@
+Without a domain, problem, and plan, I cannot create a story using PDDL information. Please provide a valid PDDL domain, problem, and plan for me to generate a story.

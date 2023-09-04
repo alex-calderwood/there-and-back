@@ -1,0 +1,146 @@
+input
+
+One day, a big red apple was in the tree. A slow ant saw the apple and wanted to eat it. The ant went up the tree to get the apple.
+The ant said, "I want to eat this big red apple." The ant tried to enter the apple to eat it. But the apple was too hard for the ant to go in.
+Then, a bird came and said, "I can help you, ant." The bird hit the apple with its beak. The apple fell and broke. The ant was happy and said, "Thank you, bird!" The ant and the bird shared the apple and ate it together.
+
+domain
+
+(define (domain ant-and-bird)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character - object)
+  (:predicates
+    (in-tree ?character - character)
+    (wants-to-eat ?character - character ?object - object)
+    (hard ?object - object)
+    (broken ?object - object)
+    (eaten ?object - object)
+    (helping ?helper - character ?helpee - character)
+  )
+
+  ;; A character climbs a tree.
+  (:action climb-tree
+    :parameters
+      (?character - character)
+    :precondition
+      (not (in-tree ?character))
+    :effect
+      (in-tree ?character)
+    :agents
+      (?character)
+  )
+
+  ;; A character wants to eat an object.
+  (:action want-to-eat
+    :parameters
+      (?character - character ?object - object)
+    :effect
+      (wants-to-eat ?character ?object)
+    :agents
+      (?character)
+  )
+
+  ;; A character tries to eat an object but fails.
+  (:action try-to-eat
+    :parameters
+      (?character - character ?object - object)
+    :precondition
+      (and (wants-to-eat ?character ?object)
+      (hard ?object))
+    :effect
+      (not (eaten ?object))
+    :agents
+      (?character)
+  )
+
+  ;; A character helps another character.
+  (:action help
+    :parameters
+      (?helper - character ?helpee - character)
+    :effect
+      (helping ?helper ?helpee)
+    :agents
+      (?helper)
+  )
+
+  ;; A character breaks an object.
+  (:action break-object
+    :parameters
+      (?character - character ?object - object ?helpee - character)
+    :precondition
+      (and (hard ?object)
+      (helping ?character ?helpee))
+    :effect
+      (broken ?object)
+    :agents
+      (?character)
+  )
+
+  ;; Characters eat an object together.
+  (:action eat-together
+    :parameters
+      (?character1 - character ?character2 - character ?object - object)
+    :precondition
+      (and (broken ?object)
+      (helping ?character1 ?character2))
+    :effect
+      (eaten ?object)
+    :agents
+      (?character1 ?character2)
+  )
+)
+
+problem
+
+(define (problem eat-apple)
+  (:domain
+    ant-and-bird)
+  (:objects
+    ant bird - character
+    apple - object)
+  (:init
+    (hard apple)
+    (intends ant (eaten apple))
+    (intends bird (eaten apple)))
+  (:goal
+    (eaten apple))
+)
+
+solution
+
+(define (plan eat-apple-solution)
+  (:problem eat-apple)
+  (:steps (help ant ant)
+          (break-object ant apple ant)
+          (eat-together ant ant apple)))
+
+pd
+
+<|story|>
+
+In a lush and fertile meadow, an ant was scouring the ground for food when it came upon a ripe, delicious-looking apple. With great effort, the ant pushed and rolled the apple until it reached the base of a tree. The ant wanted nothing more than to eat the apple, but it was hard, and too difficult for it to break apart.
+
+As the ant struggled with the apple, a bird perched high in the tree noticed the ant's plight. The bird, too, desired to eat the apple, but it was unable to do so due to the hardness of the fruit. It watched the ant's futile attempts to break the apple open and felt a pang of sympathy.
+
+Summoning its courage, the bird swooped down from the tree and offered to help the ant. Grateful, the ant accepted the bird's help. Together, they planned a way to break open the apple so both of them could enjoy its sweet taste.
+
+The bird, using its strong beak and gaining leverage from the height of a low-hanging branch, managed to break the apple in half. The ant, in turn, helped by carrying small pieces of the apple to a location where they could both enjoy their feast.
+
+Savoring the sweetness of their hard-earned meal, the ant and the bird found pleasure not only in the taste of the apple but in their newfound friendship. Together, they shared the apple, and through their collaboration, they were able to overcome the obstacle that stood in their way.
+
+pdp
+
+<|story|>
+
+Once upon a time in a peaceful forest, a clever little ant and a wise old bird were great friends. They were inseparable and always looked out for each other. They loved exploring the forest together and enjoyed the delicious fruits it had to offer.
+
+One day, while wandering through the woods, the ant saw a shiny red apple hanging from a tree. It had never tasted an apple before, and it looked delicious. The ant told the bird how much it wanted to eat the apple.
+
+The bird, being a supportive friend, decided to help the ant. The bird flew up to the tree, grabbed the apple with its beak, and gently dropped it on the ground. The ant excitedly approached the apple, ready to have a feast.
+
+However, there was just one problem: the apple was hard—all too hard for the ant to bite into. The ant tried to eat the apple, but it couldn't break through the tough skin. The ant felt frustrated and defeated.
+
+But the bird, being a resourceful and compassionate friend, had an idea. The bird decided to help the ant break the apple's skin. So, with a swift peck of its beak, the bird cracked the apple, making it easy for the ant to eat.
+
+The ant and the bird then enjoyed a delicious meal, happily munching on the apple together. Their beautiful friendship continued to grow stronger, and they lived out their lives in the forest, looking out for each other and enjoying the bountiful fruits of their friendship.
+

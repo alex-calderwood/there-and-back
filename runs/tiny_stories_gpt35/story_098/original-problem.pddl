@@ -1,0 +1,30 @@
+(define (problem sail-the-boat)
+  (:domain sailing-boat)
+  (:objects
+    thief little-girl - person
+    big-boat - boat
+    shore location-1 location-2 - location)
+  (:init
+    (at thief shore)
+    (not (nice thief))
+    (at little-girl shore)
+    (knows-sailing little-girl)
+    (intends thief (travel thief shore location-1))
+    (intends thief (help-sail little-girl thief big-boat))
+    (intends thief (travel thief location-1 location-2))
+    (intends thief (become-nice thief))
+    (intends thief (travel thief location-2 shore))
+    (intends little-girl (travel little-girl shore location-1))
+    (intends little-girl (help-sail little-girl thief big-boat))
+    (intends little-girl (travel little-girl location-1 location-2))
+    (intends little-girl (travel little-girl location-2 shore))
+  )
+  (:goal
+    (and (at thief shore)
+    (nice thief)
+    (at little-girl shore)
+    (sailing thief)
+    (sailing little-girl)
+    (not (intends thief (help-sail little-girl thief big-boat))))
+  )
+)

@@ -1,0 +1,26 @@
+(define (problem timmy-park-problem)
+  (:domain timmy-park)
+  (:objects
+    timmy dad mom - person
+    gate bushes basketball-hoop ball - object)
+  (:init
+    (in-park timmy)
+    (in-park dad)
+    (in-park mom)
+    (at timmy gate)
+    (at dad gate)
+    (at mom gate)
+    (not (playing timmy))
+    (not (playing dad))
+    (not (playing mom))
+    (not (throwing timmy))
+    (not (throwing dad))
+    (not (throwing mom))
+    (not (happy timmy))
+    (not (happy dad))
+    (not (happy mom)))
+  (:goal
+    (and (happy timmy)
+    (watching dad)
+    (watching mom)))
+)

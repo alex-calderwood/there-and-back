@@ -1,0 +1,6 @@
+(define (plan dan-university-achievement-solution)
+  (:problem dan-university-achievement)
+  (:steps (get-accepted dan)
+          (start-applauding family dan)
+          (start-applauding mom dan)
+          (make-dreams-come-true dan)))

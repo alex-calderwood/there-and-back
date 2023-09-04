@@ -1,0 +1,6 @@
+(define (plan sharing-fun-solution)
+  (:problem sharing-fun)
+  (:steps (find zara red-ball)
+          (share zara red-ball momo)
+          (find zara red-ball)
+          (play-together zara momo red-ball)))

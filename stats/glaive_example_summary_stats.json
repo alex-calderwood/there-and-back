@@ -1,0 +1,18 @@
+{
+    "domains": 4,
+    "constants": 0.75,
+    "actions": 8.0,
+    "predicates": 9.75,
+    "types": 4.0,
+    "axioms": 0.5,
+    "precondition/action": 4.59,
+    "effect/action": 4.25,
+    "agents/action": 0.94,
+    "parameters/action": 2.72,
+    "parameters/predicate": 1.59,
+    "objects": 6.5,
+    "inits": 20.0,
+    "intents": 5.75,
+    "goals": 3.25,
+    "steps": 8.0
+}

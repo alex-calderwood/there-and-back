@@ -1,0 +1,22 @@
+(define (problem robot-helper-problem)
+  (:domain robot-helper)
+  (:objects
+    carl carl-jr - robot)
+  (:init
+    (owned carl)
+    (working carl)
+    (maintained carl)
+    (intends carl (playing-video-games))
+    (not (owned carl-jr))
+    (not (working carl-jr)))
+  (:goal
+    (and (owned carl)
+    (working carl)
+    (maintained carl)
+    (intends carl (playing-video-games))
+    (owned carl-jr)
+    (working carl-jr)
+    (maintained carl-jr)
+    (not (intends carl-jr (playing-video-games))))
+  )
+)

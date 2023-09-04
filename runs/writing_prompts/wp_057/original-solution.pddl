@@ -1,0 +1,5 @@
+(define (plan alien-liberation-story-solution)
+  (:problem alien-liberation-story)
+  (:steps (defeat-illuminati alien)
+          (liberate alien protagonist)
+          (disappear alien)))

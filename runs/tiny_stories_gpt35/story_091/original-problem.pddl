@@ -1,0 +1,26 @@
+(define (problem sun-and-seed-problem)
+  (:domain sun-and-seed)
+  (:objects
+    sun seed tree - plant
+    rabbit bird - animal)
+  (:init
+    (needs-heat seed)
+    (growing seed)
+    (at rabbit tree)
+    (at bird tree)
+    (intends sun (give-heat seed))
+    (intends sun (grow-strong seed))
+    (intends sun (provide-shade tree rabbit))
+    (intends sun (provide-home tree bird))
+    (intends sun (wake-up rabbit))
+    (intends sun (wake-up bird))
+    (intends sun (happy rabbit))
+    (intends sun (happy bird))
+    (intends sun (happy tree)))
+  (:goal
+    (and (has-shade tree)
+    (has-home bird)
+    (happy rabbit)
+    (happy bird)
+    (happy tree)))
+)

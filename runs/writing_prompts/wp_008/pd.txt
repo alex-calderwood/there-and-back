@@ -1,0 +1,1 @@
+It seems that the domain and problem information is missing. Please provide the relevant PDDL information, and I will create a story based on it.

@@ -1,0 +1,21 @@
+(define (problem bird-adventure)
+  (:domain bird-adventure)
+  (:objects
+    tim sam - bird)
+  (:init
+    (not (sailing tim))
+    (not (sailing sam))
+    (not (playing tim))
+    (not (playing sam))
+    (intends tim (sailing tim))
+    (intends tim (make-friends tim sam))
+    (intends tim (start-playing tim))
+    (intends sam (make-friends tim sam))
+    (intends sam (start-playing sam)))
+  (:goal
+    (and (sailing tim)
+    (playing tim)
+    (friend tim sam)
+    (playing sam))
+  )
+)

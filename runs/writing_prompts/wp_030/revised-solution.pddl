@@ -1,0 +1,7 @@
+(define (plan solar-wind-exploration-problem-solution)
+  (:problem solar-wind-exploration-problem)
+  (:steps (develop-technology primitive-society kite-technology)
+          (move primitive-society home-planet distant-planet kite-technology)
+          (explore primitive-society distant-planet kite-technology)
+          (move primitive-society distant-planet hellhole-planet kite-technology)
+          (explore primitive-society hellhole-planet kite-technology)))

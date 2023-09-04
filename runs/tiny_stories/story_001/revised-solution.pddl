@@ -1,0 +1,6 @@
+(define (plan clara-plays-outside-solution)
+  (:problem clara-plays-outside)
+  (:steps (stop-raining)
+          (go-outside clara)
+          (play-in-mud clara outside)
+          (go-inside clara)))

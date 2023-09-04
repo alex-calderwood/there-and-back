@@ -1,0 +1,28 @@
+(define (problem mask-fun-problem)
+  (:domain mask-fun)
+  (:objects
+    tim friend1 friend2 friend3 - character
+    toy-box park - object)
+  (:init
+    (at tim toy-box)
+    (intends tim (has-mask tim))
+    (intends friend1 (meet tim friend1 toy-box))
+    (intends friend2 (meet tim friend2 toy-box))
+    (intends friend3 (meet tim friend3 toy-box))
+    (intends friend1 (take-off-mask friend1))
+    (intends friend2 (take-off-mask friend2))
+    (intends friend3 (take-off-mask friend3))
+    (intends tim (realize-friends tim friend1))
+    (intends tim (realize-friends tim friend2))
+    (intends tim (realize-friends tim friend3))
+    (intends tim (same-friends))
+    (intends friend1 (same-friends))
+    (intends friend2 (same-friends))
+    (intends friend3 (same-friends))
+    (at friend1 park)
+    (at friend2 park)
+    (at friend3 park))
+  (:goal
+    (same-friends)
+  )
+)

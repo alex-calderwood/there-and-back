@@ -1,0 +1,147 @@
+input
+
+As if looking back at a sun-cast shadow, only to realise just how far it had moved while I looked away, I started at my face in the mirror.
+
+It was my face, surely. I knew it was my face. It looked like me, and yet it didn't quite look like me. It did not look like me as I thought I looked. It was indescribable, as nearly everything that seemed different seemed exactly the same as before.
+
+Worse still was that I knew why I looked like I did not remember looking. Simply knowing it would happen, as it was happening, caused me to forget that it had happened. And so I did not see it.
+
+The sadness of my mistakes hung beneath my eyes ; the joy of my successes lined my mouth and lips from raising so many smiles. The fury of my youth ceased my forehead, while wisdom and forgiveness smoothed my eyes into soothing glass.
+
+I have come a very long way ; done so much with my time. I examined my new-old face and the life that shaped it, memorizing how I looked to compare with the next time I saw a new face in my mirror. 
+
+domain
+
+(define (domain life-reflection)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character - object emotion - item)
+  (:predicates
+    (alive ?character - character)
+    (has-emotion ?character - character ?emotion - emotion)
+    (knows-change ?character - character)
+    (memorize ?character - character)
+  )
+
+  ;; A character experiences an emotion.
+  (:action experience-emotion
+    :parameters
+      (?character - character ?emotion - emotion)
+    :precondition
+      (alive ?character)
+    :effect
+      (has-emotion ?character ?emotion)
+    :agents
+      (?character)
+  )
+
+  ;; A character notices a change in their appearance.
+  (:action notice-change
+    :parameters
+      (?character - character)
+    :precondition
+      (alive ?character)
+    :effect
+      (knows-change ?character)
+    :agents
+      (?character)
+  )
+
+  ;; A character memorizes their current appearance.
+  (:action memorize-appearance
+    :parameters
+      (?character - character)
+    :precondition
+      (and (alive ?character)
+      (knows-change ?character))
+    :effect
+      (memorize ?character)
+    :agents
+      (?character)
+  )
+)
+
+problem
+
+(define (problem life-reflection)
+  (:domain
+    life-reflection)
+  (:objects
+    protagonist - character
+    sadness joy fury wisdom forgiveness - emotion)
+  (:init
+    (alive protagonist)
+    (intends protagonist (has-emotion protagonist sadness))
+    (intends protagonist (has-emotion protagonist joy))
+    (intends protagonist (has-emotion protagonist fury))
+    (intends protagonist (has-emotion protagonist wisdom))
+    (intends protagonist (has-emotion protagonist forgiveness))
+    (intends protagonist (knows-change protagonist))
+    (intends protagonist (memorize protagonist))
+  )
+  (:goal
+    (and (has-emotion protagonist sadness)
+    (has-emotion protagonist joy)
+    (has-emotion protagonist fury)
+    (has-emotion protagonist wisdom)
+    (has-emotion protagonist forgiveness)
+    (knows-change protagonist)
+    (memorize protagonist))
+  )
+)
+
+solution
+
+(define (plan life-reflection-solution)
+  (:problem life-reflection)
+  (:steps (experience-emotion protagonist forgiveness)
+          (experience-emotion protagonist fury)
+          (experience-emotion protagonist joy)
+          (experience-emotion protagonist sadness)
+          (notice-change protagonist)
+          (experience-emotion protagonist wisdom)
+          (memorize-appearance protagonist)))
+
+pd
+
+<|story|>
+
+Once upon a time, in a quiet neighborhood, there lived a protagonist who went by the name of John. John lived an ordinary, uneventful life and went through his mundane days without much excitement or emotional outburst. However, one day, John decided to embrace the full spectrum of emotions and seek a deeper understanding of himself.
+
+John began the journey of self-exploration by intentionally experiencing a wide range of emotions. The first emotion he experienced was sadness, triggered by the memory of a heart-wrenching break-up. As tears streamed down his face, John felt the weight of the sorrow and embraced it, knowing it would lead him to grow.
+
+Next, John decided to experience joy. He reflected on a sunny day spent under the cherry blossoms with dear friends, and a warm, radiant sense of happiness filled his chest. As he laughed at the fond memories, he acknowledged that joy was a crucial part of life, just as important as sadness.
+
+The third emotion John set out to experience was fury. He remembered a time when he had been betrayed by a confidante and, with balled fists and tightened jaw, allowed the anger to course through his veins. This emotion taught him the importance of boundaries and standing up for oneself.
+
+Having experienced both negative and positive emotions, John sought out wisdom. He reached out to his mentor, an elderly woman who had lived a rich and fulfilling life. Through their conversations, John gained invaluable insights about the complexities of human emotions and the importance of embracing all of them.
+
+Finally, John chose to experience forgiveness. He recalled the same confidante who had betrayed him, and made the conscious decision to release the lingering resentment. Liberated from the heavy burden of anger, John realized that forgiveness was a necessary step towards healing and growth.
+
+One morning, as John looked into the mirror, he noticed subtle changes in his appearance. The lines on his face seemed to tell a story of his emotional journey, and he realized he had evolved during this period of reflection. He decided to memorize his current appearance as a reminder of the journey he had undertaken.
+
+In the end, John conquered each emotion and, in the process, gained a deeper understanding of himself and the human experience. By embracing sadness, joy, fury, wisdom, and forgiveness, he had found a new appreciation for life and the complex emotions that make us who we are.
+
+pdp
+
+<|story|>
+
+Life can take unexpected turns over the years, leaving its mark on a person's appearance and emotional landscape. The protagonist, a weary soul who has seen it all, had reached a point in their life when they wanted to fully embrace their experiences and remember the journey.
+
+One day, looking back on their life, they decided to revisit every emotion that had shaped them.
+
+They started with forgiveness, recalling their bitter conflicts with others and how tragedy had struck those they cared for. They embraced the feeling of letting go and found a deep sense of understanding within themselves, knowing that no one is perfect.
+
+Fury, a powerful and raw emotion, gripped them next. They remembered their moments of anger and frustration, the countless times they had felt wronged or betrayed. They acknowledged how those experiences contributed to the person they were toda.
+
+Joy set in as they reminisced about the countless moments of happiness they had shared with friends and family. They relished in the memories of laughter, warm embraces, and heartfelt connections.
+
+Then, sadness washed over them. They grieved for the people they had lost, the missed opportunities, and the experiences that had left their heart broken.
+
+As the protagonist examined themselves in the mirror, the lines on their face and marks on their body seemed to tell the story of their life. They hadn't noticed how much had changed over the years, but now they saw it clearly.
+
+In that moment, they experienced true wisdom. They realized that every emotion, every adventure, and every heartache had shaped them into the person they were today. They accepted their past and knew that it had made them stronger.
+
+Finally, they made the conscious decision to memorize their current appearance, accepting that their path had led them to this moment. They chose to embrace this chapter of their life, knowing that it would add another layer to the tapestry of their existence.
+
+The protagonist faced their reflection with newfound pride and gratitude for every experience that had brought them to this point. They now carried with them the understanding that every emotion was an essential part of their journey, and their story was far from over.
+

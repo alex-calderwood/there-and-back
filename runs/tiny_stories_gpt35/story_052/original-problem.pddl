@@ -1,0 +1,21 @@
+(define (problem kitty-food)
+  (:domain hungry-kitty)
+  (:objects
+    kitty dog mug - animal)
+  (:init
+    (at kitty garden)
+    (hungry kitty)
+    (intends kitty (feed kitty mug))
+    (at mug garden)
+    (has-food mug)
+    (scared kitty)
+    (at dog garden)
+    (scared dog)
+    (intends dog (hide dog garden garden))
+    (intends dog (heard kitty))
+  )
+  (:goal
+    (and (not (hungry kitty))
+    (not (has-food mug)))
+  )
+)

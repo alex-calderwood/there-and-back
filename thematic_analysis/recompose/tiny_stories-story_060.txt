@@ -1,0 +1,131 @@
+input
+
+Once upon a time, there was a big vase. The vase was red and pretty. It lived in a nice house with a happy family. The family liked to put pretty flowers in the vase. 
+One day, a delicious smell came into the house. It was from a big cake that Mom was making. The cake was for a fun party. The vase wanted to join the party too.
+So, the family put the vase on the table with the big cake. The vase had pretty flowers in it. Everyone at the party liked the vase and the delicious cake. The vase was happy to join the fun party. And they all had a great time together.
+
+domain
+
+(define (domain vase-party)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character item - object)
+  (:constants vase - item)
+  (:predicates
+    (happy ?character - character)
+    (at ?item - item ?place - object)
+    (has ?character - character ?item - item)
+    (party ?place - object)
+    (cake ?place - object)
+  )
+
+  ;; A character makes a cake.
+  (:action make-cake
+    :parameters
+      (?character - character ?place - object)
+    :precondition
+      (happy ?character)
+    :effect
+      (cake ?place)
+    :agents
+      (?character)
+  )
+
+  ;; A character puts an item in a place.
+  (:action put
+    :parameters
+      (?character - character ?item - item ?place - object)
+    :precondition
+      (and (happy ?character)
+      (has ?character ?item))
+    :effect
+      (at ?item ?place)
+    :agents
+      (?character)
+  )
+
+  ;; A character starts a party.
+  (:action start-party
+    :parameters
+      (?character - character ?place - object)
+    :precondition
+      (happy ?character)
+    :effect
+      (party ?place)
+    :agents
+      (?character)
+  )
+
+  ;; A character enjoys the party.
+  (:action enjoy-party
+    :parameters
+      (?character - character ?place - object)
+    :precondition
+      (and (happy ?character)
+      (party ?place))
+    :effect
+      (happy ?character)
+    :agents
+      (?character)
+  )
+)
+
+problem
+
+(define (problem vase-joins-party)
+  (:domain
+    vase-party)
+  (:objects
+    family mom - character
+    house - object)
+  (:init
+    (happy family)
+    (happy mom)
+    (at vase house)
+    (has family vase)
+    (intends family (happy family))
+    (intends mom (cake house))
+    (intends mom (party house))
+  )
+  (:goal
+    (and (at vase house)
+    (cake house)
+    (party house)
+    (happy family))
+  )
+)
+
+solution
+
+(define (plan vase-joins-party-solution)
+  (:problem vase-joins-party)
+  (:steps (make-cake mom house)
+          (start-party mom house)))
+
+pd
+
+<|story|>
+
+Once upon a time, in a small, charming house, there lived a family with a treasured vase. The family was happy and content, and their joy reverberated throughout the house. The mother, especially happy that day, decided to throw a party for everyone to take part in the celebration of their happiness. The family's goal was simple: to remain happy, keep the vase safe at home, and have delicious cake for the party.
+
+The mother, enthusiastic and determined, prepared the best cake she could. She poured all her love, joy, and care into the cake, making sure it would taste as amazing as it looked. As she finished preparing the cake, the rest of the family beamed with delight. They could already tell that the cake would be scrumptious!
+
+Meanwhile, the family placed the vase at a special spot in the house—a place of honor where it could witness the entire party unfold. Gently and carefully, they placed the vase on a table, ensuring that their precious possession was safe.
+
+Finally, the mother set everything up for the party and proudly announced the start of the celebration. The house filled with laughter, music, and good cheer, as the family members enjoyed their time together. The cake was devoured, and it tasted just as good as it looked. Happiness filled the air, and the vase, a silent witness to the joyous occasion, seemed to be a part of the celebration as well.
+
+As the night wore on, the family continued to enjoy the festivities. The mother's wish came true—the house was filled with cake, a delightful party took place, and everyone in the family remained happy. Indeed, the vase, secure in its position of honor, sparkled in delight, as if it too was a part of the celebration. For in the end, the cherished vase truly belonged to a happy family, symbolizing their love and togetherness. And that is all that mattered.
+
+pdp
+
+<|story|>
+
+In a quaint suburban neighborhood, there lived a family who owned a lovely vase that had been passed down through the generations. The family cherished the vase, and it had a special place on display in their living room. One day, the mother decided it was high time for a celebration and resolved to throw a party for the entire family.
+
+With the sun shining and the scent of fresh-cut grass in the air, the mother, feeling particularly happy and energetic, marched into the kitchen and decided to make a mouthwatering cake for everyone to enjoy during the festivities. Her heart was filled with love and happiness, and she poured those emotions into creating a delightful, delicious masterpiece.
+
+With the cake baked and cooled, the mother placed it on the dining table, ready to be devoured by her family later. The sweet aroma of the freshly-made cake filled the house, and a sense of warmth and togetherness permeated every corner. The family assembled in the house, and the moment had come to kick off their celebration.
+
+As the mother started the party, laughter and joy echoed through the halls, creating an atmosphere of pure bliss. The family chatted, danced, and enjoyed each other's company as their precious heirloom - the vase - looked on from its special spot, as if it were both a spectator and a participant. The presence of the vase in the house brought an additional layer of happiness to the family, making the event even more special and memorable.
+
+With the cake savored, the party in full swing, and the family united in happiness, they couldn't help but feel grateful for the vase, which had been a silent witness to the joy and love they shared. It was as though the vase, too, was a part of the family, and, indeed, had truly joined the party.
+

@@ -1,0 +1,5 @@
+(define (plan tim-penny-candy-solution)
+  (:problem tim-penny-candy)
+  (:steps (become-happy old-lady)
+          (become-happy tim)
+          (succeed tim)))

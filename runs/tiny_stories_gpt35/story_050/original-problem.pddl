@@ -1,0 +1,25 @@
+(define (problem spot-and-fluffy)
+  (:domain spot-and-fluffy)
+  (:objects
+    spot fluffy - object
+    block1 block2 block3 - toy)
+  (:init
+    (toy block1)
+    (toy block2)
+    (toy block3)
+    (not (stacked block1))
+    (not (stacked block2))
+    (not (stacked block3))
+    (on block2 block1)
+    (on block3 block2)
+    (not (on block1 block2))
+    (not (on block1 block3))
+    (not (on block2 block3))
+    (toy spot)
+    (toy fluffy)
+    (not (= spot fluffy)))
+  (:goal
+    (and (stacked block1)
+    (stacked block2)
+    (stacked block3)))
+)

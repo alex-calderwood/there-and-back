@@ -1,0 +1,6 @@
+(define (plan aging-spirit-problem-solution)
+  (:problem aging-spirit-problem)
+  (:steps (end-up-in-asylum protagonist)
+          (drive-away-love protagonist)
+          (become-weak protagonist)
+          (ask-spirits-to-leave protagonist)))

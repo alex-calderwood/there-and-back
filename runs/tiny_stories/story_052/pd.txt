@@ -1,0 +1,1 @@
+It seems that the provided domain and problem are not in the correct format. Please provide the PDDL information in the proper format for me to write a story based on it.

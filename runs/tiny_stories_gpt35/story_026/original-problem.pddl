@@ -1,0 +1,26 @@
+(define (problem tim-and-the-penny)
+  (:domain tim-and-the-penny)
+  (:objects
+    tim store-1 store-2 old-lady - person
+    candy - candy)
+  (:init
+    (at tim home)
+    (at store-1 store)
+    (at store-2 store)
+    (at old-lady store-2)
+    (good candy)
+    (original penny)
+    (intends tim (has tim penny))
+    (intends tim (has tim candy))
+    (intends old-lady (has old-lady penny))
+    (intends old-lady (has old-lady candy))
+    (has store-1 candy)
+    (has store-2 penny)
+  )
+  (:goal
+    (and (has tim candy)
+    (not (has store-2 penny))
+    (has old-lady penny)
+    (has old-lady candy))
+  )
+)

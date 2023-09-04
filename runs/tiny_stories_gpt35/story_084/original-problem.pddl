@@ -1,0 +1,22 @@
+(define (problem rocket-playtime-problem)
+  (:domain rocket-playtime)
+  (:objects
+    rocket tim sue park swing sky - object)
+  (:init
+    (at rocket tim)
+    (at swing park)
+    (at tim park)
+    (at sue park)
+    (intends tim (played rocket))
+    (intends sue (played rocket))
+    (intends tim (swinging rocket))
+    (intends sue (swinging rocket))
+    (intends tim (flying rocket))
+    (intends sue (flying rocket)))
+  (:goal
+    (and (flying rocket)
+    (at rocket sky)
+    (played rocket)
+    (swinging rocket))
+  )
+)

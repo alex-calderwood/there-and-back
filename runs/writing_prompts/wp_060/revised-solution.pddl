@@ -1,0 +1,6 @@
+(define (plan anglewood-hunt-solution)
+  (:problem anglewood-hunt)
+  (:steps (lock-door mrs-anglewood door)
+          (clean-item mr-anglewood rifle)
+          (adjust-item mr-anglewood uniform)
+          (wear-item mr-anglewood uniform)))

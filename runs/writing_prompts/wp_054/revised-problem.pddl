@@ -1,0 +1,36 @@
+(define (problem irish-assassination)
+  (:domain
+    irish-rebellion)
+  (:objects
+    protagonist auxiliaries informant1 informant2 visitor - character
+    church protagonist-home - place
+    webley - weapon)
+  (:init
+    (alive protagonist)
+    (at protagonist church)
+    (intends protagonist (alive protagonist))
+    (intends protagonist (not (alive informant1)))
+    (intends protagonist (not (alive informant2)))
+    (alive auxiliaries)
+    (at auxiliaries church)
+    (intends auxiliaries (alive auxiliaries))
+    (informant informant1)
+    (alive informant1)
+    (at informant1 church)
+    (informant informant2)
+    (alive informant2)
+    (at informant2 church)
+    (alive visitor)
+    (at visitor protagonist-home)
+    (intends visitor (alive visitor))
+    (intends visitor (not (alive informant1)))
+    (intends visitor (not (alive informant2)))
+    (hidden crucifix church)
+    (hidden webley protagonist-home))
+  (:goal
+    (and (not (alive informant1))
+    (not (alive informant2))
+    (alive protagonist)
+    (alive visitor))
+  )
+)

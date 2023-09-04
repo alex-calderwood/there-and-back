@@ -1,0 +1,5 @@
+(define (plan love-confession-problem-solution)
+  (:problem love-confession-problem)
+  (:steps (ask-love-question love-interest protagonist)
+          (take-pill protagonist)
+          (confess-love protagonist love-interest)))

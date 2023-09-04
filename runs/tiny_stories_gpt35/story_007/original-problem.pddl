@@ -1,0 +1,21 @@
+(define (problem lucy-paints-problem)
+  (:domain lucy-paints)
+  (:objects
+    lucy tom paints brushes bag park - object)
+  (:init
+    (at lucy room)
+    (at tom park)
+    (at paints room)
+    (at brushes room)
+    (at bag room)
+    (intends lucy (painting lucy))
+    (has lucy paints)
+    (has lucy brushes)
+    (has lucy bag)
+    (intends tom (painting tom))
+  )
+  (:goal
+    (and (painting lucy)
+    (painting tom))
+  )
+)

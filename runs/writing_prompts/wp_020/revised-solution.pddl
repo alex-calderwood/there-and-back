@@ -1,0 +1,5 @@
+(define (plan emotional-support-matt-solution)
+  (:problem emotional-support-matt)
+  (:steps (let-go matt her)
+          (acknowledge-pain matt)
+          (believe-in-better-times matt)))

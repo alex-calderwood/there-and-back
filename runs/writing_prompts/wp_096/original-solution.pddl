@@ -1,0 +1,5 @@
+(define (plan magician-satisfaction-solution)
+  (:problem magician-satisfaction)
+  (:steps (perform-show magician)
+          (perform-final-trick magician)
+          (become-satisfied magician)))

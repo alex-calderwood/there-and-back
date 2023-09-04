@@ -1,0 +1,3 @@
+The Glaive Narrative Planner, by Stephen G. Ware
+Reading domain............ 
+java.lang.RuntimeException: com.stephengware.java.planware.io.ParseException: The type "number" is not defined (at line 9).

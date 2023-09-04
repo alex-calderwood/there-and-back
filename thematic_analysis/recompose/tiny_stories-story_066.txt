@@ -1,0 +1,141 @@
+input
+
+Once upon a time, there was a little boy named Tom. He lived in a deep forest with his mom and dad. Tom liked to surprise his friends with gifts. One day, Tom found a big, pretty stone. He thought it would make a great surprise gift for his best friend, Sue.
+Tom hid the stone behind his back and went to find Sue. When he saw her, he said, "Sue, I have a surprise for you!" Sue's face had a big smile. Tom showed her the stone, and Sue loved it. They played with the stone all day, rolling it and making funny shapes in the dirt.
+As the sun went down, Tom and Sue were tired but happy. They learned that giving surprises can make others smile and feel good. The deep forest was filled with the joy of their laughter. And from that day on, Tom and Sue always tried to surprise each other with little gifts, spreading smiles and happiness wherever they went.
+
+domain
+
+(define (domain surprise-gifts)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character - object place - object item - object)
+  (:predicates
+    (at ?character - character ?place - place)
+    (has ?character - character ?item - item)
+    (happy ?character - character)
+    (gave-gift ?giver - character ?receiver - character ?item - item)
+  )
+
+  ;; A character finds an item.
+  (:action find
+    :parameters
+      (?character - character ?item - item ?place - place)
+    :precondition
+      (and (at ?character ?place)
+      (not (has ?character ?item)))
+    :effect
+      (has ?character ?item)
+    :agents
+      (?character)
+  )
+
+  ;; A character gives an item to another character.
+  (:action give
+    :parameters
+      (?giver - character ?item - item ?receiver - character ?place - place)
+    :precondition
+      (and (not (= ?giver ?receiver))
+      (at ?giver ?place)
+      (has ?giver ?item)
+      (at ?receiver ?place))
+    :effect
+      (and (not (has ?giver ?item))
+      (has ?receiver ?item)
+      (gave-gift ?giver ?receiver ?item))
+    :agents
+      (?giver ?receiver)
+  )
+
+  ;; A character plays with an item.
+  (:action play
+    :parameters
+      (?character - character ?item - item ?place - place)
+    :precondition
+      (and (at ?character ?place)
+      (has ?character ?item))
+    :effect
+      (happy ?character)
+    :agents
+      (?character)
+  )
+
+  ;; A character makes another character happy.
+  (:action make-happy
+    :parameters
+      (?character - character ?target - character)
+    :precondition
+      (and (not (= ?character ?target))
+      (not (happy ?target)))
+    :effect
+      (happy ?target)
+    :agents
+      (?character)
+  )
+)
+
+problem
+
+(define (problem surprise-gifts)
+  (:domain
+    surprise-gifts)
+  (:objects
+    tom sue - character
+    forest - place
+    stone - item)
+  (:init
+    (at tom forest)
+    (at sue forest)
+    (intends tom (gave-gift tom sue stone))
+    (intends tom (happy tom))
+    (intends tom (happy sue))
+    (intends sue (happy sue))
+  )
+  (:goal
+    (and (gave-gift tom sue stone)
+    (happy tom)
+    (happy sue))
+  )
+)
+
+solution
+
+(define (plan surprise-gifts-solution)
+  (:problem surprise-gifts)
+  (:steps (find sue stone forest)
+          (find tom stone forest)
+          (play tom stone forest)
+          (give tom stone sue forest)
+          (play sue stone forest)))
+
+pd
+
+<|story|>
+
+Tom and Sue were good friends who loved spending time together. They would often take their adventures to the forest where they would play games, find little treasures, and simply enjoy each other's company. One day, as they were exploring the forest, Tom stumbled upon a unique looking stone. It had a peculiar shape and a mysterious aura that drew Tom in. He had a great idea – he would give the stone to Sue as a surprise gift and make her happy.
+
+As Tom and Sue continued their walk through the forest, Tom carefully pocketed the stone, so Sue wouldn't notice it. He was excited about the whole idea and couldn't wait to see the smile on her face when she discovered his surprise. The forest was filled with chirping birds, rustling leaves, and the laughter of the two friends as they strolled along.
+
+After a while, they decided to take a break and rest for a while on a fallen log. Tom saw this as the perfect opportunity to reveal the gift he found for Sue. He covertly took the stone out of his pocket and said to her, "Sue, I found something interesting that I think you'll really like. Close your eyes!"
+
+Sue was curious but obliged, closing her eyes and waiting for the surprise. Tom carefully placed the pretty stone in her outstretched hands. "You can open your eyes now," he said with anticipation.
+
+When Sue opened her eyes and saw the stone, her face lit up with joy. "Wow! This is such a beautiful stone! Thank you, Tom!" she exclaimed, overjoyed by the gift. Tom, in turn, felt incredibly happy that he made Sue happy with his surprise.
+
+Together, Tom and Sue played around the forest, taking turns admiring the interesting stone, and laughing until they were out of breath. The forest echoed with their happiness, and their bond grew even stronger as they shared the simple, yet meaningful, treasure they found in the forest that day.
+
+pdp
+
+<|story|>
+
+In a quiet, serene forest, two friends named Tom and Sue decided to spend the day enjoying the beauty of nature. Tom's goal was to surprise Sue with a thoughtful gift and make both of them happy. Sue, on the other hand, simply wanted to find happiness in the beauty of the forest.
+
+While walking together, Sue stumbled upon a unique stone. She picked it up, enamored by its beauty and decided to keep it. Tom, not too far away, found a similar stone that he thought would make the perfect surprise gift for Sue. He couldn't wait to put a smile on her face.
+
+Before presenting Sue with the stone, Tom found a quiet spot in the forest and played with the stone himself, feeling an overwhelming sense of joy and happiness. Now all that was left was to make Sue happy too.
+
+As the sun began to set, Tom approached Sue and presented her with the stone. Surprised and touched by the gesture, Sue smiled and thanked Tom for his thoughtfulness. She now had not one but two beautiful stones to remember their day in the forest.
+
+With their stones in hand, Tom and Sue continued their day in the forest, each taking turns to play with their newfound treasures. They laughed and enjoyed the simple pleasure of each other's company.
+
+As the sun dipped below the horizon, Tom and Sue realized that they had achieved their goals. Tom had surprised Sue with a gift and they both felt an overwhelming sense of happiness. Hand in hand, they walked out of the forest, carrying their precious stones, and memories that would last a lifetime.
+

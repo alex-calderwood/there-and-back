@@ -1,0 +1,30 @@
+(define (problem bell-story-problem)
+  (:domain bell-story)
+  (:objects
+    tim mom man - person
+    big-bell small-bell oil - item
+    store home - object)
+  (:init
+    (at tim home)
+    (at mom home)
+    (at store store)
+    (at man street)
+    (at big-bell store)
+    (at small-bell home)
+    (needs-oil man-bike)
+    (intends tim (not (working big-bell)))
+    (intends mom (has mom oil))
+    (intends mom (not (working man-bike)))
+    (intends mom (has mom small-bell)))
+  (:goal
+    (and (at tim home)
+    (at mom home)
+    (at man home)
+    (not (needs-oil man-bike))
+    (not (intends tim (not (working big-bell))))
+    (not (intends mom (has mom oil)))
+    (not (intends mom (not (working man-bike))))
+    (has mom small-bell)
+    (not (intends mom (has mom small-bell)))
+    (not (intends tim (not (working small-bell)))))
+)

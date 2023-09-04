@@ -1,0 +1,146 @@
+input
+
+Once upon a time, in a small house, lived a girl named Lily. Lily loved to read. She read books all day long. Her room was very organized. She had a special place for all her books.
+One day, Lily found a big box. The box was full of soap. She thought it was funny. She decided to use the soap to make her room even more organized. Lily put the soap on her bookshelf, next to her books.
+As Lily read her books, she would smell the soap. It made her feel happy. Her friends came to play and they loved how her room smelled. They all wanted to read books and smell the soap too. Lily's room became the best place to be.
+
+domain
+
+(define (domain lily-and-soap)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character place - object item - object)
+  (:predicates
+    (at ?character - character ?place - place)
+    (has ?character - character ?item - item)
+    (on-shelf ?item - item)
+    (organized ?place - place)
+    (reads ?character - character)
+    (happy ?character - character)
+  )
+
+  ;; A character finds an item.
+  (:action find
+    :parameters
+      (?character - character ?item - item)
+    :precondition
+      (and (not (has ?character ?item))
+      (reads ?character))
+    :effect
+      (has ?character ?item)
+    :agents
+      (?character)
+  )
+
+  ;; A character puts an item on the shelf.
+  (:action put-on-shelf
+    :parameters
+      (?character - character ?item - item ?place - place)
+    :precondition
+      (and (has ?character ?item)
+      (at ?character ?place))
+    :effect
+      (and (not (has ?character ?item))
+      (on-shelf ?item)
+      (organized ?place))
+    :agents
+      (?character)
+  )
+
+  ;; A character reads a book.
+  (:action read
+    :parameters
+      (?character - character)
+    :precondition
+      (reads ?character)
+    :effect
+      (happy ?character)
+    :agents
+      (?character)
+  )
+
+  ;; A character smells the soap.
+  (:action smell-soap
+    :parameters
+      (?character - character ?soap - item)
+    :precondition
+      (and (on-shelf ?soap)
+      (reads ?character))
+    :effect
+      (happy ?character)
+    :agents
+      (?character)
+  )
+)
+
+problem
+
+(define (problem organize-room)
+  (:domain
+    lily-and-soap)
+  (:objects
+    lily friend1 friend2 - character
+    house - place
+    book1 book2 book3 soap - item)
+  (:init
+    (at lily house)
+    (reads lily)
+    (intends lily (organized house))
+    (intends lily (happy lily))
+    (at friend1 house)
+    (reads friend1)
+    (intends friend1 (happy friend1))
+    (at friend2 house)
+    (reads friend2)
+    (intends friend2 (happy friend2))
+    (on-shelf book1)
+    (on-shelf book2)
+    (on-shelf book3))
+  (:goal
+    (and (organized house)
+    (happy lily)
+    (happy friend1)
+    (happy friend2)))
+)
+
+solution
+
+(define (plan organize-room-solution)
+  (:problem organize-room)
+  (:steps (read friend2)
+          (read friend1)
+          (read lily)
+          (find lily book1)
+          (put-on-shelf lily book1 house)))
+
+pd
+
+<|story|>
+
+In a cozy little house, Lily, an avid reader, was living with her two friends, Friend1 and Friend2. Her house was filled with numerous books and a lovely collection of fragrant soaps. Although she loved reading and smelling her soap collection, the house was anything but organized, which made it difficult for her and her friends to fully enjoy their hobbies.
+
+One day, as they all sat in the cluttered living room, Lily decided that it was time for a change. She declared her intention to organize the house, so they could all enjoy their interests in a pleasant environment. Friend1 and Friend2 were delighted at the thought, so they vowed to help Lily with the project.
+
+Lily began by finding books scattered around the house, uncovering several volumes hidden amongst the chaos. Her friends joined in and brought the books to Lily, who placed them on the shelves. The room started to look more organized, with books neatly arranged and categorized by genre.
+
+As she arranged the books, Lily took a moment to read a passage from her favorite novel. A smile spread across her face as she felt happiness within. Friend1, inspired by Lily's reading, decided to read a section from a book they had recently discovered. The happiness they experienced from reading brightened the atmosphere in the house.
+
+Seeing her friends enjoy their reading, Lily moved on to her soap collection. She put her fragrant soaps on the shelves, mixing their beautiful scents throughout the room. Friend2, noticing the newly arranged soaps, decided to take a whiff of one of them. The scent was so delightful that happiness washed over Friend2, just as it had with the others.
+
+Lily, Friend1, and Friend2 were all happy and satisfied with the now organized house. Their happiness came not only from the organized room but also from the joy they found in their shared love for reading and the appreciation of the delightful scents of Lily's soap collection. Life in the cozy house felt complete, as they cherished their hobbies in a pleasant, organized environment.
+
+pdp
+
+<|story|>
+
+Lily, a voracious reader, lived with her two best friends, Friend1 and Friend2. They all loved to read and spend their evenings with the company of books. The three friends lived together in a cozy little house that they filled with the books they loved. Over time, their house had become more and more cluttered with books piling up everywhere. Lily, noticing the disarray, decided to take the initiative to organize the house.
+
+One day, while her friends were reading, Lily set a goal for herself to clean up the house and make it an organized haven for their bibliophilic tendencies. She hoped that by doing so, all three of them would feel happier and more at peace in their living space.
+
+Friend1 and Friend2, engrossed in their books, continued to read and enjoy the stories that unfolded on the pages. Meanwhile, Lily went on a mission to find all the misplaced books. She picked up Book1 from a random corner of the house and decided to put it back on the shelf.
+
+As she placed the book back in its rightful spot, she noticed a bar of soap sitting on the shelf. The lovely fragrance wafting from it brought a smile to her face. She thought of how nice it would be to share the wonderful scent with her friends, who were still busy reading.
+
+Lily invited Friend1 and Friend2 to take a break and showed them the soap she found on the shelf. They all took a moment to enjoy the aroma together, and the simple act of smelling the soap lifted their spirits.
+
+With the book back on the shelf, Lily's house began to look more organized. The three friends were happier in their tidier living space. They continued reading, feeling inspired and invigorated by the newfound sense of order and the delightful fragrance that filled their home.
+

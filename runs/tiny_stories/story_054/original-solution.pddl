@@ -1,0 +1,6 @@
+(define (plan rabbit-wins-race-solution)
+  (:problem rabbit-wins-race)
+  (:steps (start-racing rabbit)
+          (run-faster rabbit)
+          (win rabbit)
+          (celebrate rabbit)))

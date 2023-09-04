@@ -1,0 +1,3 @@
+The Glaive Narrative Planner, by Stephen G. Ware
+Reading domain............ 
+java.lang.RuntimeException: com.stephengware.java.planware.io.ParseException: The conjunction "(and (not (= ?term1 ?term2)) (not (connected ?term1 ?term2)))" is not allowed to appear in a goal expression (at line 18).

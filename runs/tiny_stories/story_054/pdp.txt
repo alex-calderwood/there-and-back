@@ -1,0 +1,1 @@
+Unfortunately, the PDDL information provided does not contain the required domain and problem. Please provide a valid PDDL domain and problem for me to write a story based on them.

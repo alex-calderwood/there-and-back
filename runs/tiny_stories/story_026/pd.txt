@@ -1,0 +1,1 @@
+I apologize for the inconvenience. It seems there was an issue with parsing your provided PDDL domain and problem. Please recheck the domain and problem for any errors or provide a new PDDL domain and problem, and I will gladly create a story for you.

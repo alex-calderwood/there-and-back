@@ -1,0 +1,3 @@
+The Glaive Narrative Planner, by Stephen G. Ware
+Reading domain............ 
+java.lang.RuntimeException: com.stephengware.java.planware.io.ParseException: Expected at least 2 children, but encountered 1 (at line 96).

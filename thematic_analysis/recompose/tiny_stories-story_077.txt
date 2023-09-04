@@ -1,0 +1,132 @@
+input
+
+Once upon a time, there was a gray bunny named Bob. Bob liked to hop and kick his legs. One day, Bob went to a bridge to play.
+At the bridge, Bob met a little bird named Tim. Tim was blue and liked to fly. They both wanted to play together. So, Bob said, "Let's play a game!"
+Bob and Tim played a fun game. Bob would kick a small ball and Tim would fly to catch it. They laughed and had a great time. The sun was shining and they played all day.
+At the end of the day, Bob and Tim were tired. They sat by the bridge and talked. Bob said, "I had fun today!" Tim agreed, "Me too! Let's play again soon!" They both smiled and went home, excited to play together again.
+
+domain
+
+(define (domain bunny-bird-friends)
+  (:requirements :adl :domain-axioms :intentionality)
+  (:types character place - object)
+  (:predicates
+    (at ?character - character ?place - place)
+    (happy ?character - character)
+    (tired ?character - character)
+    (played-together ?character1 - character ?character2 - character)
+  )
+
+  ;; A character moves from one place to another.
+  (:action move
+    :parameters
+      (?character - character ?from - place ?to - place)
+    :precondition
+      (and (not (= ?from ?to))
+      (at ?character ?from))
+    :effect
+      (and (not (at ?character ?from))
+      (at ?character ?to))
+    :agents
+      (?character)
+  )
+
+  ;; Two characters play together.
+  (:action play
+    :parameters
+      (?character1 - character ?character2 - character ?place - place)
+    :precondition
+      (and (not (= ?character1 ?character2))
+      (at ?character1 ?place)
+      (at ?character2 ?place))
+    :effect
+      (and (played-together ?character1 ?character2)
+      (happy ?character1)
+      (happy ?character2)
+      (tired ?character1)
+      (tired ?character2))
+    :agents
+      (?character1 ?character2)
+  )
+
+  ;; A character rests.
+  (:action rest
+    :parameters
+      (?character - character)
+    :precondition
+      (tired ?character)
+    :effect
+      (not (tired ?character))
+    :agents
+      (?character)
+  )
+)
+
+problem
+
+(define (problem bunny-bird-play)
+  (:domain
+    bunny-bird-friends)
+  (:objects
+    bob - character
+    tim - character
+    home - place
+    bridge - place)
+  (:init
+    (at bob home)
+    (at tim home)
+    (intends bob (happy bob))
+    (intends bob (played-together bob tim))
+    (intends tim (happy tim))
+    (intends tim (played-together bob tim)))
+  (:goal
+    (and (played-together bob tim)
+    (happy bob)
+    (happy tim)
+    (tired bob)
+    (tired tim)
+    (at bob home)
+    (at tim home))
+  )
+)
+
+solution
+
+(define (plan bunny-bird-play-solution)
+  (:problem bunny-bird-play)
+  (:steps (play bob tim home)))
+
+pd
+
+<|story|>
+
+In a lush forest, there were two characters named Bob and Tim who loved to have fun together. Bob was a bunny, and Tim was a bird. They lived in a lovely little home next to each other in the forest.
+
+One sunny morning, Bob hopped out of his burrow with an intention to make himself and his best friend, Tim, happy. He glanced around and saw Tim perching on a nearby tree branch. With a smile, Bob invited Tim to play with him near a bridge that was close to their home in the forest.
+
+Excited to have fun with his buddy, Tim chirped in agreement and fluttered down to join Bob. Together, they hopped and flew towards the bridge, leaving their cozy home behind.
+
+Upon reaching the bridge, they were eager to play together. They ran and flew around, chasing each other, hopping over one another, and splashing in the nearby water. Their laughter echoed through the forest, and the other creatures stopped to watch their joyful games.
+
+As they played to their hearts' content, Bob and Tim felt elated. Their happiness was so contagious that it spread to all the animals around them.
+
+Eventually, though, all their energetic play left Bob and Tim feeling tired. They decided to return to their home, side by side, and rest for a while.
+
+Back at their home, Bob and Tim laid down and relaxed, taking a well-deserved break. They were both happy, knowing they had spent quality time together. As they rested, they started to regain their energy, ready for their next adventure.
+
+Their day had gone just as they had intended, filled with camaraderie, laughter, and joy. They had played together, made each other happy, and were now comfortably resting at home, ready to embark on new experiences in the days to come.
+
+pdp
+
+<|story|>
+
+Bob the bunny and Tim the bird were two unlikely friends who lived together in a small home tucked by the edge of the forest. Bob was a cheerful, curious creature, while Tim was cautious and clever. They always made a great pair when they played together.
+
+One beautiful day, Bob and Tim decided that it would be the perfect day to play outside and enjoy the warm sun. Bob, always eager to spread joy, intended to make both himself and Tim happy. Tim, in return, also wanted to indulge in a good time with his friend Bob.
+
+As they stepped out of their home, they breathed in the fresh air and immediately began to frolic, chasing each other among the trees and shrubs. They laughed and played games, making the most of their afternoon adventure.
+
+Finally, tired but content, Bob and Tim returned to their small home. They had achieved their goals of playing together, making each other happy, and feeling the pleasant ache of exhaustion after an afternoon of fun. 
+
+Bob and Tim knew that they could rely on each other to bring happiness and excitement to their lives. A friendship like theirs was rare and precious, and they cherished every moment they spent together.
+
