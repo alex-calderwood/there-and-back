@@ -6,7 +6,6 @@ Extracting Formal Domains for Controllable Neurosymbolic Story Authoring" by Jac
 
 Our system uses GPT-4 to extract logical story domains and problems from input stories for use in the Glaive narrative planner ("Decompose"). It then uses these logical story specifications and the subsequent Glaive plans to generate potential stories ("Compose"). See the paper for more details.
 
-
 We hope this repository can add additional context and support to the discussion in the paper. 
 
 ## Results
@@ -48,7 +47,7 @@ The `there_and_back` folder contains:
 ### How to Run
 
 #### Requirements
-- While we are excited to share the source code for this system, we presently rely on GPT-4, a proprietary model, OpenAI's GPT-4. To use the model, you'll need an OpenAI API Key with access to GPT-4. For more information on how to do so, see this [guide](https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/). 
+- While we are excited to share the source code for this system, we presently rely on a proprietary model, OpenAI's GPT-4. To use the model, you'll need an OpenAI API Key with access to GPT-4. For more information on how to do so, see this [guide](https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/).
 
 - The system is written primarily in Python. We've only tested using Python 3.10, but other versions should work as well.
 
@@ -70,7 +69,7 @@ From the top-level directory, run:
 
 The output will be in the same format as the "runs" in the results section above.
 
-You can use the provided data like this:
+You can use either of the dataset samples like this:
 
 `python -m there_and_back.recompose ./there_and_back/input_data/tiny_stories/story_001.txt output`
 
@@ -82,7 +81,7 @@ To run Recompose over the _TinyStories_ and _r/WritingPrompts_ dataset, run:
 
 `python -m there_and_back.scripts.recompose_all`
 
-**Note that while a single run costs on the order of cents, a run over a large dataset like this can cost dozens of dollars.** 
+**_NOTE:_**: While a single Recompose run costs on the order of cents, a batch over a large dataset like this can cost dozens of dollars.** 
 
 To run Compose over our baseline domains, run:
 
