@@ -82,9 +82,9 @@ To run Recompose over the _TinyStories_ and _r/WritingPrompts_ dataset, run:
 
 `python -m there_and_back.scripts.recompose_all`
 
-Warning: While a single run costs on the order of cents, a run over a large dataset like this can cost dozens of dollars. 
+**Note thile a single run costs on the order of cents, a run over a large dataset like this can cost dozens of dollars.** 
 
-To run Compose over our baseline domains, run 
+To run Compose over our baseline domains, run:
 
 `python -m there_and_back.scripts.compose_baseline`
 
