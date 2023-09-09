@@ -47,7 +47,7 @@ The `there_and_back` folder contains:
 ### How to Run
 
 #### Requirements
-- While we are excited to share the source code for this system, we presently rely on a proprietary model, OpenAI's GPT-4. To use the model, you'll need an OpenAI API Key with access to GPT-4. For more information on how to do so, see this [guide](https://www.howtogeek.com/885918/how-to-get-an-openai-api-key/).
+- While we are excited to share the source code for this system, we presently rely on a proprietary model, OpenAI's GPT-4. To use the model, you'll need an OpenAI API Key with access to GPT-4.
 
 - The system is written primarily in Python. We've only tested using Python 3.10, but other versions should work as well.
 
