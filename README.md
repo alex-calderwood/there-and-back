@@ -1,4 +1,4 @@
-# "There and Back Again" Results
+# There and Back Again
 
 ## Overview
 This repository contains results and code for the paper "There and Back Again:
