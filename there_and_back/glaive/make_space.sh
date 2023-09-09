@@ -1,0 +1,1 @@
+java -jar Glaive/glaive.jar -s -v -d Glaive/tests/$1-domain.pddl -p Glaive/tests/$1-problem.pddl -ws Glaive/tests/$1-space.pddl

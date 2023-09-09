@@ -1,0 +1,1 @@
+java -jar ./Glaive/glaive.jar -v -b -d Glaive/tests/$1-domain.pddl -p Glaive/tests/$1-problem.pddl -rs Glaive/tests/$1-space.pddl -o Glaive/tests/$1-solution.pddl -n 1 2>&1 | tee log.txt

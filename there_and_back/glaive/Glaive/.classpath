@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Delegation/src"/>
+	<classpathentry kind="src" path="Glaive/src"/>
+	<classpathentry kind="src" path="Intentional Planning/src"/>
+	<classpathentry kind="src" path="PlanWare/src"/>
+	<classpathentry kind="lib" path="glaive.jar"/>
+	<classpathentry kind="output" path="Delegation/bin"/>
+</classpath>
