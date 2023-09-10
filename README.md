@@ -51,7 +51,7 @@ The `there_and_back` folder contains:
 
 - The system is written primarily in Python. We've only tested using Python 3.10, but other versions should work as well.
 
-- We use Glaive to generate our plans, which uses the Java 7 runtime. We've included the Glaive Jar file and call it from our code, but you'll need to have Java 7 installed; we've had success using [jEnv](https://www.jenv.be/) as our Java manager.
+- We use Glaive to generate our plans, which uses the Java 7 runtime. We've included the Glaive Jar file and call it from our code, but you'll need to have Java 7 installed; we've had success using [jEnv](https://www.jenv.be/) as our Java manager. Using Java 7 standalone also works.
 
 #### Preparation
 
