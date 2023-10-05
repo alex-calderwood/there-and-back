@@ -15,9 +15,8 @@ To evaluate this system, we ran the Decompose and Compose pipelines on 100 short
 This data is reproduced here: 
 
 ### Pipeline runs
-Pipeline runs for each of the 200 total stories are available in the `runs` folder. The top-level directories specify the dataset and model. Each story folder contains the generated domains, problems, and plan for both the original and the auto-debug ("revised") runs. Additionally, the input story is provided, as is metadata that includes the full set of prompt messages (system, assistant, and user) used at each step of the pipeline. 
+Pipeline runs for each of the 200 total stories are available in the `runs` folder. The top-level directories specify the dataset and model. Each story folder contains the generated domains, problems, and plan for both the original and the auto-debug ("revised") runs. Additionally, the input story is provided, as is metadata that includes the full set of prompt messages (system, assistant, and user) used at each step of the pipeline [^1].
 
-**_NOTE:_**  Please be aware that some of the stories sampled from the _r/WritingPrompts_ dataset contain graphic and problematic content. We regret that we did not screen it more thoroughly before we ran these experiments.
 
 ### Statistics 
 
@@ -25,8 +24,7 @@ Additionally, we computed two sets of statistics over each set of runs. First, w
 
 ### Thematic Analysis
 
-To get a holistic sense of how valuable this system would be in a creative tool, we additionally performed thematic analysis over a small sample of the successful results. The outputs we reviewed are reproduced in the `thematic_analysis` folder.
-
+To get a holistic sense of how valuable this system would be in a creative tool, we additionally performed thematic analysis over a small sample of the successful results. The outputs we reviewed are reproduced in the `thematic_analysis` folder [^1].
 
 ## Code
 
@@ -97,3 +95,4 @@ If you have any questions, feel free to email us at jochkell [at] ucsc [dot] edu
 
 We're happy to talk more about the paper, our results, and our implementation.
 
+[^1]: **_NOTE ON CONTENT:_**  Several of the stories we sampled from the r/WritingPrompts dataset for analysis contained graphic, disturbing, and offensive content. We regret that we did not screen them more thoroughly before we ran these experiments. While the offending stories were used in the evaluation of our system, we have decided remove the more egregious ones from this repository to mitigate harm.
